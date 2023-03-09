@@ -15,17 +15,97 @@ WHERE EmployeeSalary.EmpId IS NULL;
 ## 2. SQL query to fetch all the employees who are not working on any project.
 
 ```sql
+SELECT EmpId 
+FROM EmployeeSalary 
+WHERE Project IS NULL;
+```
+## 3. SQL query to fetch all the Employees from EmployeeDetails who joined in the Year 2020.
+
+```sql
+SELECT * FROM EmployeeDetails
+WHERE DateOfJoining BETWEEN '2020/01/01'
+AND '2020/12/31';
+```
+## 4. Fetch all employees from EmployeeDetails who have a salary record in EmployeeSalary.
+
+```sql
+SELECT * FROM EmployeeDetails E
+WHERE EXISTS
+(SELECT * FROM EmployeeSalary S 
+WHERE  E.EmpId = S.EmpId);
+```
+## 5. Write an SQL query to fetch a project-wise count of employees sorted by project’s count in descending order.
+
+```sql
+SELECT Project, count(EmpId) EmpProjectCount
+FROM EmployeeSalary
+GROUP BY Project
+ORDER BY EmpProjectCount DESC;
+```
+## 6.Fetch employee names and salaries even if the salary value is not present for the employee.
+
+```sql
+SELECT E.FullName, S.Salary 
+FROM EmployeeDetails E 
+LEFT JOIN 
+EmployeeSalary S
+ON E.EmpId = S.EmpId;
+```
+## 7.	Write an SQL query to fetch all the Employees who are also managers from the EmployeeDetails table..
+
+```sql
+SELECT DISTINCT E.FullName
+FROM EmployeeDetails E
+INNER JOIN EmployeeDetails M
+ON E.EmpID = M.ManagerID;
+
+```
+## 8.	Write an SQL query to fetch duplicate records from EmployeeDetails.
+
+```sql
+SELECT FullName, ManagerId, DateOfJoining, City, COUNT(*)
+FROM EmployeeDetails
+GROUP BY FullName, ManagerId, DateOfJoining, City
+HAVING COUNT(*) > 1;
+```
+## 9. Write an SQL query to fetch only odd rows from the table.
+
+```sql
+SELECT * FROM EmployeeDetails 
+WHERE MOD (EmpId, 2) <> 0;
+```
+## 10.	Write a query to find the 3rd highest salary from a table without top or limit keyword.
+
+```sql
+SELECT Salary
+FROM EmployeeSalary Emp1
+WHERE 2 = (
+                SELECT COUNT( DISTINCT ( Emp2.Salary ) )
+                FROM EmployeeSalary Emp2
+                WHERE Emp2.Salary > Emp1.Salary
+            )
+```
+## 11.	Write an SQL query to fetch the EmpId and FullName of all the employees working under the Manager with id – ‘986’.
+
+```sql
+SELECT  EmpId, FullName
+FROM EmployeeDetails
+WHERE ManagerId = 986;
+```
+## 12.	Write an SQL query to fetch the different projects available from the EmployeeSalary table.
+
+```sql
 SELECT DISTINCT(Project)
 FROM EmployeeSalary;
 ```
-## 3. SQL query to fetch all the Employees from EmployeeDetails who joined in the Year 2020.
+## 13.	Write an SQL query to fetch the count of employees working in project ‘P1’.
 
 ```sql
 SELECT COUNT(*) 
 FROM EmployeeSalary 
 WHERE Project = 'P1';
 ```
-## 4. Fetch all employees from EmployeeDetails who have a salary record in EmployeeSalary.
+## 14.	Write an SQL query to find the maximum, minimum, and average salary of the employees.
 
 ```sql
 SELECT Max(Salary), 
@@ -33,59 +113,12 @@ Min(Salary),
 AVG(Salary) 
 FROM EmployeeSalary;
 ```
-## 5. Write an SQL query to fetch a project-wise count of employees.
-
-```sql
-
-```
-## 6.Fetch employee names and salaries even if the salary value is not present for the employee.
-
-```sql
-
-```
-## 7.	Write an SQL query to fetch all the Employees who are also managers.
-
-```sql
-
-```
-## 8.	Write an SQL query to fetch duplicate records from EmployeeDetails.
-
-```sql
-
-```
-## 9. Write an SQL query to fetch only odd rows from the table.
-
-```sql
-
-```
-## 10.	Write a query to find the 3rd highest salary from a table without top or limit keyword.
-
-```sql
-
-```
-## 11.	Write an SQL query to fetch the EmpId and FullName of all the employees working under the Manager with id – ‘986’.
-
-```sql
-
-```
-## 12.	Write an SQL query to fetch the different projects available from the EmployeeSalary table.
-
-```sql
-
-```
-## 13.	Write an SQL query to fetch the count of employees working in project ‘P1’.
-
-```sql
-
-```
-## 14.	Write an SQL query to find the maximum, minimum, and average salary of the employees.
-
-```sql
-
-```
 ## 15.	Write an SQL query to find the employee id whose salary lies in the range of 9000 and 15000.
 
 ```sql
+SELECT EmpId, Salary
+FROM EmployeeSalary
+WHERE Salary BETWEEN 9000 AND 15000;
 
 ```
 ## 16.	Write an SQL query to fetch those employees who live in Toronto and work under the manager with ManagerId – 321.
