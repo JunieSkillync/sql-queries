@@ -349,5 +349,72 @@ WHERE 2 = (
             )
 ```
 
+![bg width:1000px](./Patients.png)
 
+![bg width:1000px](./PatientsCheckup.png)
+
+## 45.	Write a SQL query to fetch the PatientName in uppercase and state as lowercase. Also use the ALIAS name for the result-set as PatName and NewState.
+
+```sql
+
+```
+
+## 46.	Find the Nth highest consultation fees from the PatientsCheckup table.
+
+```sql
+
+```
+
+## 47.	Write a query to fetch top N records ordered by ConsultationFees.
+
+```sql
+
+```
+
+## 48.	Write a query to retrieve the list of patients from the same state.
+
+```sql
+
+```
+
+## 49.	Write a query to retrieve two minimum and maximum consultation fees from the PatientsCheckup Table.
+
+```sql
+
+```
+
+## 50.	Write a query to fetch patient details along with the weight fees, even if the details are missing.
+
+```sql
+
+```
+
+## 51.	Write a SQL query to fetch doctor wise count of patients sorted by the doctors
+
+```sql
+
+```
+## 52.	Write a SQL query to fetch the first and last record of the Patients table.
+
+```sql
+
+```
+
+## 53.	Write a SQL query to fetch consultation fees – wise count and sort them in descending order.
+
+```sql
+
+```
+
+## 54.	Write a SQL query to retrieve patient details from the Patients table who have a weight in the PatientsCheckup table.
+
+```sql
+
+```
+
+## 55.	Write a SQL query to retrieve the last 2 records from the Patients table.
+
+```sql
+
+```
 
