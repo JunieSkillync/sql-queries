@@ -356,65 +356,102 @@ WHERE 2 = (
 ## 45.	Write a SQL query to fetch the PatientName in uppercase and state as lowercase. Also use the ALIAS name for the result-set as PatName and NewState.
 
 ```sql
-
+SELECT upper(Patient Name) as PatName , lower(state) as NewState
+from Patients;
 ```
 
 ## 46.	Find the Nth highest consultation fees from the PatientsCheckup table.
 
 ```sql
-
+SELECT ConsultationFees
+FROM PatientsCheckup
+ORDER BY ConsultationFees DESC LIMIT N-1,1;
 ```
 
 ## 47.	Write a query to fetch top N records ordered by ConsultationFees.
 
 ```sql
-
+SELECT * FROM PatientsCheckup ORDER BY ConsultationFees DESC LIMIT N;
 ```
 
 ## 48.	Write a query to retrieve the list of patients from the same state.
 
 ```sql
-
+SELECT DISTINCT P.PatientID, P.PatientName, P.State
+FROM Patients P, Patient P1
+WHERE P.State = P1.State AND P.PatientID != P1.PatientID;
 ```
 
 ## 49.	Write a query to retrieve two minimum and maximum consultation fees from the PatientsCheckup Table.
 
 ```sql
+– TWO MINIMUM CONSULTATION FEES
+ SELECT DISTINCT ConsultationFees FROM PatientsCheckup P1
+ WHERE 2 >= (SELECT COUNT(DISTINCT ConsultationFees)FROM PatientsCheckup P2
+ WHERE P1.ConsultationFees >= P2.ConsultationFees) ORDER BY P1.SConsultationFees DESC;
+
+  – TWO MAXIMUM CONSULTATION FEES
+SELECT DISTINCT ConsultationFees FROM PatientsCheckup P1
+ WHERE 2 >= (SELECT COUNT(DISTINCT ConsultationFees)FROM PatientsCheckup P2
+ WHERE P1.ConsultationFees <= P2.ConsultationFees) ORDER BY P1.ConsultationFees DESC;
 
 ```
 
 ## 50.	Write a query to fetch patient details along with the weight fees, even if the details are missing.
 
 ```sql
+SELECT P.PatientName, C.ConsultationFees
+FROM Patients P 
+LEFT JOIN 
+PatientsCheckup C
+ON P.PatientId = C.PatientId;
 
 ```
 
 ## 51.	Write a SQL query to fetch doctor wise count of patients sorted by the doctors
 
 ```sql
-
+SELECT DoctorID, COUNT(PatientID) AS DocPat
+FROM Patients GROUP BY DoctorID
+ORDER BY DocPat;
 ```
 ## 52.	Write a SQL query to fetch the first and last record of the Patients table.
 
 ```sql
+–FETCH FIRST RECORD
+SELECT * FROM Patients WHERE PatientID = (SELECT MIN(PatientID) FROM Patients);
+ 
+–FETCH LAST RECORD
+SELECT * FROM Patients WHERE PatientID = (SELECT MAX(PatientID) FROM Patients);
 
 ```
 
 ## 53.	Write a SQL query to fetch consultation fees – wise count and sort them in descending order.
 
 ```sql
+SELECT ConsultationFees, COUNT(PatientId) CFCount
+FROM PatientsCheckup 
+GROUP BY ConsultationFees
+ORDER BY CFCount DESC;
 
 ```
 
 ## 54.	Write a SQL query to retrieve patient details from the Patients table who have a weight in the PatientsCheckup table.
 
 ```sql
+SELECT * FROM Patients P
+WHERE EXISTS
+(SELECT * FROM PatientsCheckup C WHERE P.PatientID = C.PatientID);
 
 ```
 
 ## 55.	Write a SQL query to retrieve the last 2 records from the Patients table.
 
 ```sql
+SELECT * FROM Patients WHERE
+PatientID <=2 UNION SELECT * FROM
+(SELECT * FROM Patients P ORDER BY P.PatientID DESC)
+AS P1 WHERE P1.PatientID <=2;
 
 ```
 
