@@ -567,7 +567,7 @@ HAVING COUNT(Orders.OrderID) > 25;
 ![bg width:1000px](./Orders1.png)
 
 
-![bg width:1000px](./shippers.png)
+![bg width:1000px](./Shippers.png)
 
 
 ## 68.	Lists the number of orders sent by each shipper
