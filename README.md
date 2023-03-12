@@ -455,3 +455,84 @@ AS P1 WHERE P1.PatientID <=2;
 
 ```
 
+## 56.	Write a SQL query  to find all the patients who joined in the year 2022.
+
+```sql
+SELECT * FROM Patients
+WHERE RegDate BETWEEN '2021/01/01' AND '2021/12/31';
+```
+
+## 57.	Write a query to find those patients who have paid consultation fees between 400 to 700.
+
+```sql
+SELECT * FROM Patients WHERE PatientID IN 
+(SELECT PatientID FROM PatientsCheckup WHERE ConsultationFees BETWEEN '400' AND '700');
+
+```
+
+## 58.	Write a query to add email validation to your database.
+
+```sql
+SELECT email FROM Patients WHERE NOT REGEXP_LIKE(email, ‘[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}’, ‘i’);
+
+```
+## 59.	Write a SQL query to fetch details of all patients excluding patients with name  “Sheela” and “Anay”.
+
+```sql
+SELECT * FROM Patients WHERE PatientName NOT IN ('Sheela','Anay'); 
+```
+
+## 60.	Write a query to retrieve the first three characters of  PatientName from the Patients table.
+
+```sql
+SELECT SUBSTRING(PatientName, 1, 3) FROM Patients; 
+
+```
+
+## 61.	Write a query to fetch PatientIDs  which are present in: 
+
+```sql
+
+```
+
+## 62.	Write a query to find the number of patients whose RegDate is between 01/04/2021 to 31/12/2022 and are grouped according to state.
+
+```sql
+–Present IN BOTH TABLES
+SELECT PatientId FROM Patients 
+WHERE PatientId IN 
+(SELECT PatientId FROM PatientsCheckup);
+
+```
+
+## 63.	Write a query to fetch all records from the Patients table; ordered by PatientName in ascending order, State in descending order.
+
+```sql
+SELECT * FROM Patients ORDER BY PatientName ASC, State DESC;
+
+```
+
+![bg width:1000px](./customers.png)
+
+## 64.	Lists the number of customers in each country. Only include countries with more than 5 customers:
+
+```sql
+SELECT COUNT(CustomerID), Country
+FROM Customers
+GROUP BY Country
+HAVING COUNT(CustomerID) > 5;
+
+```
+
+## 65.	Lists the number of customers in each country, sorted high to low (Only include countries with more than 5 customers):
+
+```sql
+SELECT COUNT(CustomerID), Country
+FROM Customers
+GROUP BY Country
+HAVING COUNT(CustomerID) > 5
+ORDER BY COUNT(CustomerID) DESC;
+
+```
+
+
