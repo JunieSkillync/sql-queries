@@ -535,4 +535,69 @@ ORDER BY COUNT(CustomerID) DESC;
 
 ```
 
+![bg width:1000px](./Orders.png)
 
+
+![bg width:1000px](./Employees.png)
+
+
+## 66.	Lists the employees that have registered more than 10 orders
+
+```sql
+SELECT Employees.LastName, COUNT(Orders.OrderID) AS NumberOfOrders
+FROM (Orders
+INNER JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID)
+GROUP BY LastName
+HAVING COUNT(Orders.OrderID) > 10;
+
+```
+
+## 67.	Lists if the employees "Davolio" or "Fuller" have registered more than 25 orders:
+
+```sql
+SELECT Employees.LastName, COUNT(Orders.OrderID) AS NumberOfOrders
+FROM Orders
+INNER JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID
+WHERE LastName = 'Davolio' OR LastName = 'Fuller'
+GROUP BY LastName
+HAVING COUNT(Orders.OrderID) > 25;
+
+```
+
+![bg width:1000px](./Orders1.png)
+
+
+![bg width:1000px](./shippers.png)
+
+
+## 68.	Lists the number of orders sent by each shipper
+
+```sql
+SELECT Shippers.ShipperName, COUNT(Orders.OrderID) AS NumberOfOrders FROM Orders
+LEFT JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID
+GROUP BY ShipperName;
+
+```
+![bg width:1000px](./Products.png)
+
+
+![bg width:1000px](./Suppliers.png)
+
+
+## 69.	Lists the suppliers with a product price less than 20 by using SQL Exists.
+
+```sql
+SELECT SupplierName
+FROM Suppliers
+WHERE EXISTS (SELECT ProductName FROM Products WHERE SupplierId = Suppliers.supplierId AND Price < 20);
+
+```
+
+## 70.	Lists the suppliers with a product price equal to 22 by using SQL Exists.
+
+```sql
+SELECT SupplierName
+FROM Suppliers
+WHERE EXISTS (SELECT ProductName FROM Products WHERE SupplierId = Suppliers.supplierId AND Price = 22);
+
+```
