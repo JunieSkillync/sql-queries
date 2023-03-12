@@ -580,7 +580,6 @@ GROUP BY ShipperName;
 ```
 ![bg width:1000px](./Products.png)
 
-
 ![bg width:1000px](./Suppliers.png)
 
 
