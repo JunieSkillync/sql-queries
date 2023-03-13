@@ -735,4 +735,101 @@ GROUP BY occupation;
 
 ```
 
+![bg width:1000px](./Student1.png)
 
+![bg width:1000px](./Subject.png)
+
+## 85.	Write a query shows the Subject_Name of those subjects whose Subject_ID is BCA103 and BCA106:
+
+```sql
+
+```
+
+## 86.	Write a query in SQL to find the minimum and maximum number from the integer column
+
+```sql
+
+```
+
+## 87.	Write a query to access the first record from the SQL table?
+
+```sql
+
+```
+
+## 88.	Write a query to access the first Nth rows from the table?
+
+```sql
+
+```
+
+## 89.	Write a query in SQL to create a new table with the same data and structure as an existing table.
+
+```sql
+
+```
+
+## 90.	Write a query in SQL to find the second-highest value of an integer column from the table?
+
+```sql
+
+```
+## 91.	Write a query shows the second-highest marks from the student table:
+
+```sql
+
+```
+
+## 92.	Write  query shows the record of the three highest marks from the student table:
+
+```sql
+
+```
+
+## 93.	Write an SQL query to fetch the Stu_Name and Stu_Marks of those students whose age is 20.
+
+```sql
+
+```
+
+## 94.	Write a query to show the maximum marks of each subject.
+
+```sql
+
+```
+
+## 95.	Write a query to show all the record of those students whose Marks is greater than 82 and age is 22
+
+```sql
+
+```
+
+## 96.	Write a query to show the record of those students whose name begins with the 'm' character.
+
+```sql
+
+```
+
+## 97.	Write an SQL query to show the unique values of Stu_Age from the student table:
+
+```sql
+
+```
+
+## 98. Write query shows the first two characters of Stu_Name from the Student table:
+
+```sql
+
+```
+
+## 99.	Write query creates the View of those students whose Marks is greater than 85 from the Student table:
+
+```sql
+
+```
+
+## 100.	Write a query finds the average of marks of Student table:
+
+```sql
+
+```
