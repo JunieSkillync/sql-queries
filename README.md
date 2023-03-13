@@ -742,65 +742,82 @@ GROUP BY occupation;
 ## 85.	Write a query shows the Subject_Name of those subjects whose Subject_ID is BCA103 and BCA106:
 
 ```sql
+SELECT * FROM Student WHERE Subject_ID = 'BCA103' and Subject_ID = 'BCA106' ;  
 
 ```
 
 ## 86.	Write a query in SQL to find the minimum and maximum number from the integer column
 
 ```sql
+SELECT MAX(Stu_Marks), MIN(Stu_Marks) FROM Student;
 
 ```
 
 ## 87.	Write a query to access the first record from the SQL table?
 
 ```sql
+SELECT * FROM Student WHERE Rownum = 1;  
 
 ```
 
 ## 88.	Write a query to access the first Nth rows from the table?
 
 ```sql
+select * from sales limit 0,5;
 
 ```
 
 ## 89.	Write a query in SQL to create a new table with the same data and structure as an existing table.
 
 ```sql
+CREATE TABLE Student_Marks SELECT * FROM Student;  
 
 ```
 
-## 90.	Write a query in SQL to find the second-highest value of an integer column from the table?
+## 90.	Write a query shows the 3rd highest marks from the Student table:
 
 ```sql
+select *
+from Student
+order by Stu_Marks desc
+limit 2,1
+
 
 ```
 ## 91.	Write a query shows the second-highest marks from the student table:
 
 ```sql
-
+Select MAX(Stu_Marks) from Student   
+where Stu_Marks NOT IN (Select MAX(Stu_Marks) from Student);  
 ```
 
 ## 92.	Write  query shows the record of the three highest marks from the student table:
 
 ```sql
-
+select *
+from Student
+order by Stu_Marks desc
+limit 0,3;
 ```
 
 ## 93.	Write an SQL query to fetch the Stu_Name and Stu_Marks of those students whose age is 20.
 
 ```sql
+SELECT Stu_Name, Stu_Marks FROM Student WHERE Stu_Age = 20; 
 
 ```
 
 ## 94.	Write a query to show the maximum marks of each subject.
 
 ```sql
+Select Student_ID, Stu_Subject_ID, MAX(Stu_Marks) from Student group by Stu_Subject_ID;  
 
 ```
 
 ## 95.	Write a query to show all the record of those students whose Marks is greater than 82 and age is 22
 
 ```sql
+SELECT * FROM Student WHERE Stu_Marks > 82 and Stu_Age = 22;  
 
 ```
 
@@ -808,28 +825,32 @@ GROUP BY occupation;
 
 ```sql
 
+SELECT * FROM Student WHERE Stu_Name LIKE '%m';  
+
 ```
 
 ## 97.	Write an SQL query to show the unique values of Stu_Age from the student table:
 
 ```sql
+SELECT DISTINCT(Stu_Age) from Student; 
 
 ```
 
 ## 98. Write query shows the first two characters of Stu_Name from the Student table:
 
 ```sql
-
+SELECT SUBSTRING(Stu_Name, 1, 2) from Student;  
 ```
 
 ## 99.	Write query creates the View of those students whose Marks is greater than 85 from the Student table:
 
 ```sql
+CREATE VIEW Student_Age AS SELECT Stu_Name, Stu_Age FROM Student WHERE Stu_Marks < 85;  
 
 ```
 
 ## 100.	Write a query finds the average of marks of Student table:
 
 ```sql
-
+SELECT AVG (Stu_Marks ) FROM Student;  
 ```
