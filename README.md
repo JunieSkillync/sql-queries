@@ -716,18 +716,22 @@ SELECT emp_id, emp_name, occupation, SUM(working_hours) AS "Total working hours"
 ## 83.	Use having clause to execute the following statement that calculates the working hours of all employees, grouping them based on their occupation and returns the result whose Total_working_hours>24.
 
 ```sql
+ SELECT emp_id, emp_name, occupation,   
+SUM(working_hours) Total_working_hours   
+FROM employees   
+GROUP BY occupation   
+HAVING SUM(working_hours)>24; 
 
 ```
 
 ## 84.	Uses the DISTINCT keyword to remove the duplicate rows from the column name. This clause can also be used with sum() function to return the total summed value of a Unique number of records present in the table.
 
 ```sql
-
- SELECT emp_id, emp_name, occupation,   
-SUM(working_hours) Total_working_hours   
+SELECT emp_name, occupation,   
+SUM(DISTINCT working_hours) Total_working_hours  
 FROM employees   
-GROUP BY occupation   
-HAVING SUM(working_hours)>24;  
+GROUP BY occupation;  
+ 
 
 ```
 
