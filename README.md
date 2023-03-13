@@ -689,3 +689,46 @@ HAVING COUNT(*)>=2
 ORDER BY COUNT(*);  
 
 ```
+
+![bg width:1000px](./employees2.png)
+
+## 80.	Write a query that calculates the total number of working hours of all employees in the table:
+
+```sql
+SELECT SUM(working_hours) AS "Total working hours" FROM employees;  
+
+```
+
+## 81.	Write a query used to return the result based on the condition specified in the WHERE clause. Execute the following query to calculate the total working hours of employees whose working_hours >= 12.
+
+```sql
+ SELECT SUM(working_hours) AS "Total working hours" FROM employees WHERE working_hours>=12; 
+
+```
+
+## 82.	Write a query to use the SUM() function with the GROUP BY clause to return the total summed value for each group. For example, this statement calculates the total working hours of each employee by using the SUM() function with the GROUP BY clause, as shown in the following query:
+
+```sql
+SELECT emp_id, emp_name, occupation, SUM(working_hours) AS "Total working hours" FROM employees GROUP BY occupation;
+
+```
+
+## 83.	Use having clause to execute the following statement that calculates the working hours of all employees, grouping them based on their occupation and returns the result whose Total_working_hours>24.
+
+```sql
+
+```
+
+## 84.	Uses the DISTINCT keyword to remove the duplicate rows from the column name. This clause can also be used with sum() function to return the total summed value of a Unique number of records present in the table.
+
+```sql
+
+ SELECT emp_id, emp_name, occupation,   
+SUM(working_hours) Total_working_hours   
+FROM employees   
+GROUP BY occupation   
+HAVING SUM(working_hours)>24;  
+
+```
+
+
