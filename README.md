@@ -600,3 +600,92 @@ FROM Suppliers
 WHERE EXISTS (SELECT ProductName FROM Products WHERE SupplierId = Suppliers.supplierId AND Price = 22);
 
 ```
+
+![bg width:1000px](./Students.png)
+
+![bg width:1000px](./Comments.png)
+
+## 71.	Write a SQL query to know the actual student name for each of the comments
+
+```sql
+SELECT students.name, comments.forum_username, comments.comment
+FROM students
+INNER JOIN comments
+  ON students.forum_username = comments.forum_username
+ORDER BY students.name ASC;
+
+```
+## 72.	Write a query to display all the records of the Student table that matched and non matched too.
+
+```sql
+SELECT students.name, comments.forum_username, comments.comment
+FROM students
+LEFT JOIN comments
+  ON students.forum_username = comments.forum_username
+ORDER BY students.name ASC;
+
+```
+
+## 73.	Write a query to display all the records of the Comments table that matched and non matched too.
+
+```sql
+SELECT
+  students.name,
+  comments.forum_username,
+  comments.comment
+FROM students
+RIGHT JOIN comments
+  ON students.forum_username = comments.forum_username
+ORDER BY students.name ASC;
+
+```
+
+## 74.	Write a query to display the Cartesian product of student and comment table.
+
+```sql
+SELECT *
+FROM students
+CROSS JOIN comments
+ORDER BY students.name ASC;
+
+```
+
+![bg width:1000px](./employees1.png)
+
+## 75.	Execute the following query that uses the COUNT(expression) function to calculates the total number of employees name available in the table:
+
+```sql
+SELECT COUNT(emp_name) FROM employees;    
+
+```
+
+## 76.	Execute the following statement that returns all rows from the employee table and WHERE clause specifies the rows whose value in the column emp_age is greater than 32:
+
+```sql
+SELECT COUNT(*) FROM employees WHERE emp_age>32; 
+
+```
+
+## 77.	This statement uses the COUNT(distinct expression) function that counts the Non-Null and distinct rows in the column emp_age:
+
+```sql
+SELECT COUNT(DISTINCT emp_age) FROM employees;  
+
+```
+
+## 78.	By use the count() function with the GROUP BY clause that returns the count of the element in each group. For example, the following statement returns the number of employee in each city:
+
+```sql
+SELECT emp_name, city, COUNT(*) FROM employees GROUP BY city;
+
+```
+
+## 79.	Use ORDER BY and Having clause with the count() function. Execute the following statement that gives the employee name who has at least two age same and sorts them based on the count result:
+
+```sql
+SELECT emp_name, emp_age, COUNT(*) FROM employees   
+GROUP BY emp_age   
+HAVING COUNT(*)>=2   
+ORDER BY COUNT(*);  
+
+```
