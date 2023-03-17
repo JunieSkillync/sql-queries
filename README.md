@@ -492,6 +492,9 @@ SELECT SUBSTRING(PatientName, 1, 3) FROM Patients;
 ## 61.	Write a query to fetch PatientIDs  which are present in: 
 
 ```sql
+SELECT PatientId FROM Patients 
+WHERE PatientId IN 
+(SELECT PatientId FROM PatientsCheckup);
 
 ```
 
