@@ -5,6 +5,7 @@
 ![bg width:1000px](./EmployeeSalary.png)
 ## 1. SQL Query to fetch records from that are present in one table but not in another table.
 
+
 ```sql
 SELECT EmployeeDetails.*
 FROM EmployeeSalary
